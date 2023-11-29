@@ -48,13 +48,19 @@ body {
 
 } 
 
- 
+
+ul>label[for='completed-tasks'] { 
+    
+    text-decoration: line-through;
+} 
+
 
 ul { 
 
     margin: 0; 
 
     padding: 0; 
+
 
 } 
 

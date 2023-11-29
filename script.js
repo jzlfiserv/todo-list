@@ -11,7 +11,9 @@ function addTask() {
         // create a new list item
 
         let li = document.createElement("li"); 
-        li.appendChild(document.createTextNode(taskInput.value));
+        let lab = document.createElement("label");
+        lab.innerHTML = taskInput.value;
+        li.appendChild(lab);
        
         let deleteButton = document.createElement("button");
         deleteButton.innerText = "Delete";
@@ -21,17 +23,12 @@ function addTask() {
         li.appendChild(deleteButton);
 
 
-
         let completeButton = document.createElement("button");
         completeButton.innerText = "Complete";
         completeButton.onclick = function () {
             completeTask(li);
         };
         li.appendChild(completeButton);
-
-
-        
-        // add the task text to the list item
 
         
         // display the list item to the task list
@@ -43,24 +40,25 @@ function addTask() {
 }
 
 
-function completeTask(){
-    let taskList = document.getElementsById("incomplete-tasks");
-       
-    
 
-}
 
-// move task to completed tasks
 function completeTask(taskItem) {
     let incompleteTasks = document.getElementById("incomplete-tasks");
     let completedTasks = document.getElementById("completed-tasks");
  
-    // remove Edit and Complete buttons
-    taskItem.removeChild(taskItem.querySelector("button")); // Edit button
-    taskItem.removeChild(taskItem.querySelector("button")); // Complete button
- 
-    // move the task item to completed tasks
+
+    taskItem.removeChild(taskItem.querySelector("button")); 
+    taskItem.removeChild(taskItem.querySelector("button")); 
+
     completedTasks.appendChild(taskItem);
+}
+
+function clearTasks(){ 
+    let taskList = document.querySelectorAll("#completed-tasks li");
+    Array.from(taskList).forEach((li)=>
+    {
+        li.parentNode.removeChild(li);
+    });
 }
 
 
